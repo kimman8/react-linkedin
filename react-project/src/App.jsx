@@ -23,16 +23,19 @@ const dishObjects = items.map((dish, i) => ({
 
 function Main({ dishes }) {
   return (
-    <main>
-      <ul>
-        {dishes.map((dish) => (
-          <li key={dish.id} style={{ listStyleType: 'none' }}>
-            {dish.title}
-          </li>
-        ))}
-      </ul>
-      <img src="https://github.com/kimman8.png" alt="zeus" height={200} />
-    </main>
+    <>
+      <h2>hello yes sir</h2>
+      <main>
+        <ul>
+          {dishes.map((dish) => (
+            <li key={dish.id} style={{ listStyleType: 'none' }}>
+              {dish.title}
+            </li>
+          ))}
+        </ul>
+        <img src="https://github.com/kimman8.png" alt="zeus" height={200} />
+      </main>
+    </>
   );
 }
 

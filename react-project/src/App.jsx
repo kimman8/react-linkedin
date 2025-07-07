@@ -31,7 +31,7 @@ function Main({ dishes }) {
           </li>
         ))}
       </ul>
-      <img src="https://github.com/kimman8.png" alt="zeu" height={200} />
+      <img src="https://github.com/kimman8.png" alt="zeus" height={200} />
     </main>
   );
 }

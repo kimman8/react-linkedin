@@ -1,10 +1,15 @@
 import './App.css';
-import chefImage from './images/chef.jpg';
+import { useState } from 'react';
 
 function Header({ name, year }) {
+  const [status, setStatus] = useState(true);
   return (
     <header>
       <h1>{name}'s Kitchen</h1>
+      <button onClick={() => setStatus(!status)}>
+        {status ? 'Close' : 'Open'} Restaurant
+      </button>
+      <h2>the restaturant is currently {status ? 'open' : 'closed'}</h2>
       <p>Copyright {year}</p>
     </header>
   );
@@ -22,6 +27,9 @@ const dishObjects = items.map((dish, i) => ({
 }));
 
 function Main({ dishes }) {
+  const [counter, setCounter] = useState(0);
+  const what = useState();
+  console.log(what);
   return (
     <>
       <h2>hello yes sir</h2>
@@ -34,6 +42,7 @@ function Main({ dishes }) {
           ))}
         </ul>
         <img src="https://github.com/kimman8.png" alt="zeus" height={200} />
+        <h3 onClick={() => setCounter((prev) => prev + 1)}>hello {counter}</h3>
       </main>
     </>
   );

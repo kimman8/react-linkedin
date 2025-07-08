@@ -1,9 +1,9 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
 
 function Button({ openStatus, onStatus }) {
   return (
-    <button onClick={() => onStatus(!openStatus)}>
+    <button onClick={onStatus}>
       {openStatus ? 'Close' : 'Open'} Restaurant
     </button>
   );
@@ -55,7 +55,8 @@ function Main({ dishes }) {
 }
 
 function App() {
-  const [status, setStatus] = useState(true);
+  // const [status, setStatus] = useState(true);
+  const [status, toggle] = useReducer((state) => !state, true);
 
   return (
     <div>
@@ -63,7 +64,7 @@ function App() {
         name="Alex"
         year={new Date().getFullYear()}
         openStatus={status}
-        onStatus={setStatus}
+        onStatus={toggle}
       />
       <Main dishes={dishObjects} />
     </div>

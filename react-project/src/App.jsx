@@ -1,19 +1,25 @@
 import './App.css';
 import { useState } from 'react';
 
-function Header({ name, year }) {
-  const [status, setStatus] = useState(true);
+function Button({ openStatus, onStatus }) {
+  return (
+    <button onClick={() => onStatus(!openStatus)}>
+      {openStatus ? 'Close' : 'Open'} Restaurant
+    </button>
+  );
+}
+
+function Header({ name, year, openStatus, onStatus }) {
   return (
     <header>
       <h1>{name}'s Kitchen</h1>
-      <button onClick={() => setStatus(!status)}>
-        {status ? 'Close' : 'Open'} Restaurant
-      </button>
-      <h2>the restaturant is currently {status ? 'open' : 'closed'}</h2>
+      <Button openStatus={openStatus} onStatus={onStatus} />
+      <h2>the restaturant is currently {openStatus ? 'open' : 'closed'}</h2>
       <p>Copyright {year}</p>
     </header>
   );
 }
+
 const items = [
   'Macaroni and Cheese',
   'Salmon with Potatoes',
@@ -49,9 +55,16 @@ function Main({ dishes }) {
 }
 
 function App() {
+  const [status, setStatus] = useState(true);
+
   return (
     <div>
-      <Header name="Alex" year={new Date().getFullYear()} />
+      <Header
+        name="Alex"
+        year={new Date().getFullYear()}
+        openStatus={status}
+        onStatus={setStatus}
+      />
       <Main dishes={dishObjects} />
     </div>
   );

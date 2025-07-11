@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 
 function Button({ openStatus, onStatus }) {
   return (
@@ -34,8 +34,6 @@ const dishObjects = items.map((dish, i) => ({
 
 function Main({ dishes }) {
   const [counter, setCounter] = useState(0);
-  const what = useState();
-  console.log(what);
   return (
     <>
       <h2>hello yes sir</h2>
@@ -57,6 +55,9 @@ function Main({ dishes }) {
 function App() {
   // const [status, setStatus] = useState(true);
   const [status, toggle] = useReducer((state) => !state, true);
+  useEffect(() => {
+    console.log(`the restaurant is ${status ? 'open' : 'closed'}`);
+  }, [status]);
 
   return (
     <div>
